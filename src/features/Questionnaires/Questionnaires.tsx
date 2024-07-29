@@ -1,8 +1,107 @@
 import React from 'react';
-import { Typography } from 'antd';
-
-const { Text } = Typography;
+import { Button, Flex, Form, Input, Radio } from 'antd';
 
 export const Questionnaires: React.FC = () => {
-  return <Text>Questionnaires page</Text>;
+  return (
+    <Form layout={'vertical'}>
+      <Flex vertical>
+        <Form.Item
+          label={'Вопрос 1'}
+          name={'question-1'}
+          layout={'vertical'}
+          rules={[{ required: true, message: 'Please enter a question' }]}
+        >
+          <Input placeholder={'Enter your answer…'} />
+        </Form.Item>
+
+        <Form.Item
+          label={'Вопрос 2'}
+          name={'question-2'}
+          layout={'vertical'}
+          rules={[{ required: true, message: 'Please enter a question' }]}
+        >
+          <Input placeholder={'Enter your answer…'} />
+        </Form.Item>
+
+        <Form.Item
+          label={'Вопрос 3'}
+          name={'question-3'}
+          layout={'vertical'}
+          rules={[{ required: true, message: 'Please enter a question' }]}
+        >
+          <Input placeholder={'Enter your answer…'} />
+        </Form.Item>
+
+        <Form.Item
+          label='Вопрос 4'
+          name='question-4'
+          rules={[{ required: true, message: 'Please enter a question' }]}
+        >
+          <Radio.Group>
+            <Radio value='1' style={{ margin: '0 10px' }}>
+              1
+            </Radio>
+            <Radio value='2' style={{ margin: '0 10px' }}>
+              2
+            </Radio>
+            <Radio value='3' style={{ margin: '0 10px' }}>
+              3
+            </Radio>
+            <Radio value='4' style={{ margin: '0 10px' }}>
+              4
+            </Radio>
+            <Radio value='5' style={{ margin: '0 10px' }}>
+              5
+            </Radio>
+          </Radio.Group>
+        </Form.Item>
+
+        <Form.Item
+          label={'Вопрос 5'}
+          name={'question-5'}
+          layout={'vertical'}
+          rules={[{ required: true, message: 'Please enter a question' }]}
+        >
+          <Input placeholder={'Enter your answer…'} />
+        </Form.Item>
+
+        <Form.Item
+          label={'Вопрос 6'}
+          name={'question-6'}
+          layout={'vertical'}
+          rules={[{ required: true, message: 'Please enter a question' }]}
+        >
+          <Input placeholder={'Enter your answer…'} />
+        </Form.Item>
+
+        <Form.Item
+          label='Вопрос 7'
+          name='question-7'
+          rules={[{ required: true, message: 'Please enter a question' }]}
+        >
+          <Radio.Group>
+            <Radio.Button style={{ width: 100 }} value={false}>
+              Да
+            </Radio.Button>
+            <Radio.Button style={{ width: 100 }} value={true}>
+              Нет
+            </Radio.Button>
+          </Radio.Group>
+        </Form.Item>
+
+        <Form.Item
+          name={'question-8'}
+          label={'Вопрос 8'}
+          layout={'vertical'}
+          rules={[{ required: true, message: 'Please enter a question' }]}
+        >
+          <Input placeholder={'Enter your answer…'} />
+        </Form.Item>
+
+        <Button type='primary' htmlType={'submit'}>
+          Отправить
+        </Button>
+      </Flex>
+    </Form>
+  );
 };
