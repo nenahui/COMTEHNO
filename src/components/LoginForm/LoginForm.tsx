@@ -17,11 +17,22 @@ export const LoginForm: React.FC<Props> = ({ open, onFinish }) => {
     >
       <Form onFinish={onFinish} layout={'vertical'}>
         <Flex vertical style={{ height: 170 }} justify={'center'}>
-          <Form.Item label='Почта' name='email' layout={'vertical'} style={{ marginBottom: 10 }}>
+          <Form.Item
+            label='Почта'
+            name='email'
+            layout={'vertical'}
+            style={{ marginBottom: 10 }}
+            rules={[{ required: true, message: 'Пожалуйста, введите свою почту' }]}
+          >
             <Input placeholder='Введите вашу почту' />
           </Form.Item>
 
-          <Form.Item label='Пароль' name='password' layout={'vertical'}>
+          <Form.Item
+            label='Пароль'
+            name='password'
+            layout={'vertical'}
+            rules={[{ required: true, message: 'Пожалуйста, введите свой пароль' }]}
+          >
             <Input placeholder='Введите ваш пароль' />
           </Form.Item>
         </Flex>

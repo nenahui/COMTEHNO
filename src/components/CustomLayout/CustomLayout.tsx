@@ -12,7 +12,6 @@ const headerStyle: React.CSSProperties = {
 };
 
 const contentStyle: React.CSSProperties = {
-  textAlign: 'center',
   margin: '20px 0',
 };
 

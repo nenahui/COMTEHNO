@@ -9,50 +9,52 @@ export const Questionnaires: React.FC = () => {
           label={'Вопрос 1'}
           name={'question-1'}
           layout={'vertical'}
-          rules={[{ required: true, message: 'Please enter a question' }]}
+          rules={[{ required: true, message: 'Пожалуйста, введите ваш ответ…' }]}
         >
-          <Input placeholder={'Enter your answer…'} />
+          <Input placeholder={'Введите ваш ответ…'} />
         </Form.Item>
 
         <Form.Item
           label={'Вопрос 2'}
           name={'question-2'}
           layout={'vertical'}
-          rules={[{ required: true, message: 'Please enter a question' }]}
+          rules={[{ required: true, message: 'Пожалуйста, введите ваш ответ…' }]}
         >
-          <Input placeholder={'Enter your answer…'} />
+          <Input placeholder={'Введите ваш ответ…'} />
         </Form.Item>
 
         <Form.Item
           label={'Вопрос 3'}
           name={'question-3'}
           layout={'vertical'}
-          rules={[{ required: true, message: 'Please enter a question' }]}
+          rules={[{ required: true, message: 'Пожалуйста, введите ваш ответ…' }]}
         >
-          <Input placeholder={'Enter your answer…'} />
+          <Input placeholder={'Введите ваш ответ…'} />
         </Form.Item>
 
         <Form.Item
           label='Вопрос 4'
           name='question-4'
-          rules={[{ required: true, message: 'Please enter a question' }]}
+          rules={[{ required: true, message: 'Пожалуйста, введите ваш ответ…' }]}
         >
-          <Radio.Group>
-            <Radio value='1' style={{ margin: '0 10px' }}>
-              1
-            </Radio>
-            <Radio value='2' style={{ margin: '0 10px' }}>
-              2
-            </Radio>
-            <Radio value='3' style={{ margin: '0 10px' }}>
-              3
-            </Radio>
-            <Radio value='4' style={{ margin: '0 10px' }}>
-              4
-            </Radio>
-            <Radio value='5' style={{ margin: '0 10px' }}>
-              5
-            </Radio>
+          <Radio.Group style={{ width: '100%' }}>
+            <Flex justify={'space-between'}>
+              <Radio value='1' style={{ margin: '0 10px' }}>
+                1
+              </Radio>
+              <Radio value='2' style={{ margin: '0 10px' }}>
+                2
+              </Radio>
+              <Radio value='3' style={{ margin: '0 10px' }}>
+                3
+              </Radio>
+              <Radio value='4' style={{ margin: '0 10px' }}>
+                4
+              </Radio>
+              <Radio value='5' style={{ margin: '0 10px' }}>
+                5
+              </Radio>
+            </Flex>
           </Radio.Group>
         </Form.Item>
 
@@ -60,32 +62,34 @@ export const Questionnaires: React.FC = () => {
           label={'Вопрос 5'}
           name={'question-5'}
           layout={'vertical'}
-          rules={[{ required: true, message: 'Please enter a question' }]}
+          rules={[{ required: true, message: 'Пожалуйста, введите ваш ответ…' }]}
         >
-          <Input placeholder={'Enter your answer…'} />
+          <Input placeholder={'Введите ваш ответ…'} />
         </Form.Item>
 
         <Form.Item
           label={'Вопрос 6'}
           name={'question-6'}
           layout={'vertical'}
-          rules={[{ required: true, message: 'Please enter a question' }]}
+          rules={[{ required: true, message: 'Пожалуйста, введите ваш ответ…' }]}
         >
-          <Input placeholder={'Enter your answer…'} />
+          <Input placeholder={'Введите ваш ответ…'} />
         </Form.Item>
 
         <Form.Item
           label='Вопрос 7'
           name='question-7'
-          rules={[{ required: true, message: 'Please enter a question' }]}
+          rules={[{ required: true, message: 'Пожалуйста, введите ваш ответ…' }]}
         >
-          <Radio.Group>
-            <Radio.Button style={{ width: 100 }} value={false}>
-              Да
-            </Radio.Button>
-            <Radio.Button style={{ width: 100 }} value={true}>
-              Нет
-            </Radio.Button>
+          <Radio.Group style={{ width: '100%' }}>
+            <Flex justify={'space-between'}>
+              <Radio.Button value={false} style={{ width: '50%', textAlign: 'center' }}>
+                Да
+              </Radio.Button>
+              <Radio.Button value={true} style={{ width: '50%', textAlign: 'center' }}>
+                Нет
+              </Radio.Button>
+            </Flex>
           </Radio.Group>
         </Form.Item>
 
@@ -93,9 +97,9 @@ export const Questionnaires: React.FC = () => {
           name={'question-8'}
           label={'Вопрос 8'}
           layout={'vertical'}
-          rules={[{ required: true, message: 'Please enter a question' }]}
+          rules={[{ required: true, message: 'Пожалуйста, введите ваш ответ…' }]}
         >
-          <Input placeholder={'Enter your answer…'} />
+          <Input placeholder={'Введите ваш ответ…'} />
         </Form.Item>
 
         <Button type='primary' htmlType={'submit'}>

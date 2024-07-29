@@ -12,6 +12,22 @@ const data = [
     title: 'Резюме Хусаинова Э.Ю.',
     src: '/documents/dst.pdf',
   },
+  {
+    title: 'Положение о проекте МУИТ',
+    src: '/documents/dst.pdf',
+  },
+  {
+    title: 'Политика СМК МУИТ',
+    src: '/documents/dst.pdf',
+  },
+  {
+    title: 'Положение ДОККО-фин',
+    src: '/documents/dst.pdf',
+  },
+  {
+    title: 'МУИТ положение СМКО',
+    src: '/documents/dst.pdf',
+  },
 ];
 
 const infoItems: InfoItem[] = [
@@ -75,6 +91,8 @@ export const Home: React.FC = () => {
         </Col>
         <Col xs={24} md={12} lg={12}>
           <Image
+            prefix={'Посмотреть'}
+            fallback={'Не удалось загрузить изображение…'}
             src={'/elvira.jpg'}
             className={'elvira-img'}
             style={{ width: '100%', borderRadius: 8 }}
