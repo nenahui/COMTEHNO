@@ -93,7 +93,7 @@ export const Home: React.FC = () => {
           <Image
             prefix={'Посмотреть'}
             fallback={'Не удалось загрузить изображение…'}
-            src={'/elvira.jpg'}
+            src={'./elvira.jpg'}
             className={'elvira-img'}
             style={{ width: '100%', borderRadius: 8 }}
             alt={'Elvira img'}
