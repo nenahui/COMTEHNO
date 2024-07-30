@@ -9,7 +9,9 @@ interface Props {
 export const InfoCard: React.FC<Props> = ({ infoItem }) => {
   return (
     <Card title={infoItem.title} style={{ textAlign: 'left' }}>
-      <Typography.Text>{infoItem.description}</Typography.Text>
+      <Typography.Text style={{ display: 'block', textAlign: 'justify' }}>
+        {infoItem.description}
+      </Typography.Text>
     </Card>
   );
 };

@@ -15,7 +15,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'semi': ['error', 'always'],
-    'quotes': ['error', 'single'],
+    'quotes': ['warn', 'single'],
     'react-hooks/exhaustive-deps': 'error',
     'eqeqeq': ['error', 'always'],
     '@typescript-eslint/no-explicit-any': 'warn',

@@ -2,6 +2,10 @@ import { LoginOutlined } from '@ant-design/icons';
 import { Button, Flex, Layout, Segmented } from 'antd';
 import React, { type PropsWithChildren, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { selectIsLoggedIn } from '../../store/authSlice';
+import { login } from '../../store/authThunks';
+import type { UserAuth } from '../../types';
 import { LoginForm } from '../LoginForm/LoginForm';
 
 const headerStyle: React.CSSProperties = {
@@ -11,14 +15,19 @@ const headerStyle: React.CSSProperties = {
   marginBottom: 20,
 };
 
+const authHeaderStyle: React.CSSProperties = {
+  textAlign: 'center',
+  background: 'transparent',
+  padding: 0,
+};
+
 const contentStyle: React.CSSProperties = {
-  margin: '20px 0',
+  marginTop: 10,
+  marginBottom: 10,
 };
 
 const layoutStyle = {
   backgroundColor: '#fff',
-  borderRight: '1px solid rgba(0, 0, 0, 0.05)',
-  borderLeft: '1px solid rgba(0, 0, 0, 0.05)',
   maxWidth: 1360,
   margin: '0 auto',
   padding: '20px 1rem',
@@ -31,14 +40,27 @@ export const CustomLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState('');
   const [loginModalVisible, setLoginModalVisible] = useState(false);
+  const dispatch = useAppDispatch();
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const [options, setOptions] = useState<string[]>(['Главная', 'Новости', 'Анкеты', 'Чат']);
 
   const openModal = () => {
     setLoginModalVisible(true);
   };
 
-  const onFinishLogin = () => {
+  const closeModal = () => {
     setLoginModalVisible(false);
   };
+
+  const onFinishLogin = (data: UserAuth) => {
+    dispatch(login(data));
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setOptions((prevState) => [...prevState, 'Статистика']);
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     const page = location.slice(1);
@@ -51,7 +73,9 @@ export const CustomLayout: React.FC<PropsWithChildren> = ({ children }) => {
             ? 'Статистика'
             : page === 'news'
               ? 'Новости'
-              : ''
+              : page === 'chats'
+                ? 'Чат'
+                : ''
     );
   }, [location]);
 
@@ -63,7 +87,9 @@ export const CustomLayout: React.FC<PropsWithChildren> = ({ children }) => {
           ? 'questionnaires'
           : value === 'Статистика'
             ? 'statistics'
-            : 'news'
+            : value === 'Чат'
+              ? 'chats'
+              : 'news'
     }`;
     setCurrentPage(value);
     navigate(current);
@@ -71,24 +97,28 @@ export const CustomLayout: React.FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <Layout style={layoutStyle}>
-      <Header style={headerStyle}>
+      <Header style={isLoggedIn ? authHeaderStyle : headerStyle}>
         <Flex justify={'center'} align={'center'} gap={'middle'} wrap>
           <Segmented
             size={'large'}
             value={currentPage}
-            options={['Главная', 'Анкеты', 'Статистика', 'Новости']}
+            options={options}
             onChange={(value) => onChange(value as string)}
           />
-          <Button
-            icon={<LoginOutlined />}
-            type={'primary'}
-            shape={'round'}
-            size={'large'}
-            onClick={openModal}
-          >
-            Войти
-          </Button>
-          <LoginForm onFinish={onFinishLogin} open={loginModalVisible} />
+          {!isLoggedIn && (
+            <>
+              <Button
+                icon={<LoginOutlined />}
+                type={'primary'}
+                shape={'round'}
+                size={'large'}
+                onClick={openModal}
+              >
+                Войти
+              </Button>
+              <LoginForm onFinish={onFinishLogin} onCancel={closeModal} open={loginModalVisible} />
+            </>
+          )}
         </Flex>
       </Header>
       <Content style={contentStyle}>{children}</Content>

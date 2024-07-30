@@ -1,21 +1,30 @@
 import { Flex, Form, Input, Modal } from 'antd';
 import React from 'react';
+import { useAppSelector } from '../../app/hooks';
+import { selectIsLogging } from '../../store/authSlice';
+import type { UserAuth } from '../../types';
 
 interface Props {
   open: boolean;
-  onFinish: VoidFunction;
+  onFinish: (data: UserAuth) => void;
+  onCancel: VoidFunction;
 }
 
-export const LoginForm: React.FC<Props> = ({ open, onFinish }) => {
+export const LoginForm: React.FC<Props> = ({ open, onFinish, onCancel }) => {
+  const isLogging = useAppSelector(selectIsLogging);
+  const [form] = Form.useForm();
+
   return (
     <Modal
       open={open}
       okText={'Войти'}
+      onOk={() => form.submit()}
       cancelText={'Отмена'}
-      onCancel={onFinish}
+      confirmLoading={isLogging}
+      onCancel={onCancel}
       title={'Вход в личный кабинет'}
     >
-      <Form onFinish={onFinish} layout={'vertical'}>
+      <Form form={form} onFinish={(data) => onFinish(data)} layout={'vertical'}>
         <Flex vertical style={{ height: 170 }} justify={'center'}>
           <Form.Item
             label='Почта'

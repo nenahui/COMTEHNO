@@ -28,7 +28,7 @@ export const Statistics: React.FC = () => {
         },
       ]}
       type='area'
-      style={{ overflowX: 'scroll' }}
+      style={{ overflow: 'hidden' }}
       height={'500'}
     />
   );
